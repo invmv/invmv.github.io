@@ -102,6 +102,14 @@ collections:
         label: "上一页"
         widget: "string"
         required: false
+      - name: "sidebar"
+        label: "侧边栏"
+        widget: "object"
+        fields:
+          - name: "open"
+            label: "展开"
+            widget: "boolean"
+            default: true
       - name: "body"
         label: "正文"
         widget: "markdown"

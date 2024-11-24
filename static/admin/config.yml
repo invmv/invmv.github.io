@@ -3,7 +3,7 @@ backend:
   repo: username/repo
   branch: main # Branch to update (optional; defaults to master)
   site_domain: https://invmy.us.kg
-  base_url: https://sveltia-cms-auth.iiv.workers.dev
+  base_url: https://invmy.us.kg
   auth_endpoint: /api/auth
 media_folder: static/img
 public_folder: /img

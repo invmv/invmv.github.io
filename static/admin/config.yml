@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: username/repo
+  repo: invmv/invmv.github.io
   branch: main # Branch to update (optional; defaults to master)
   base_url: https://example.com
   auth_endpoint: /api/auth

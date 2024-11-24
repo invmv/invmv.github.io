@@ -66,7 +66,7 @@ collections:
         widget: "boolean"
         default: false
   
-  # 配置文档集合
+  # 文档集合
   - name: "docs"
     label: "文档"
     folder: "content/docs"
@@ -91,22 +91,29 @@ collections:
         widget: "string"
         required: false
 
-  # 索引页设置
+  # 博客索引页
   - name: "blog_index"
     label: "博客索引"
-    file: "content/blog/_index.md"
-    fields:
-      - name: "title"
-        label: "标题"
-        widget: "string"
+    files: # 用 files 配置单个文件
+      - label: "博客索引"
+        name: "blog_index"
+        file: "content/blog/_index.md"
+        fields:
+          - name: "title"
+            label: "标题"
+            widget: "string"
 
+  # 文档索引页
   - name: "docs_index"
     label: "文档索引"
-    file: "content/docs/_index.md"
-    fields:
-      - name: "title"
-        label: "标题"
-        widget: "string"
-      - name: "linkTitle"
-        label: "链接标题"
-        widget: "string"
+    files: # 用 files 配置单个文件
+      - label: "文档索引"
+        name: "docs_index"
+        file: "content/docs/_index.md"
+        fields:
+          - name: "title"
+            label: "标题"
+            widget: "string"
+          - name: "linkTitle"
+            label: "链接标题"
+            widget: "string"

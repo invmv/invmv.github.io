@@ -7,14 +7,14 @@ backend:
 media_folder: static/img
 public_folder: /img
 collections:
-  # 配置页面集合
+  # 页面集合
   - name: "pages"
     label: "页面"
-    folder: "content" # 所有页面存放在 content 目录下
+    folder: "content"
     create: true
-    slug: "{{slug}}/index" # 生成 index.md 文件
+    slug: "{{slug}}/index"
     filter:
-      - field: "type" # 使用类型字段区分特殊页面
+      - field: "type"
         value: "page"
     fields:
       - name: "title"
@@ -32,7 +32,7 @@ collections:
         widget: "string"
         default: "default"
 
-  # 配置博客集合
+  # 博客集合
   - name: "blog"
     label: "博客"
     folder: "content/blog"
@@ -50,13 +50,13 @@ collections:
         widget: "list"
         fields:
           - name: "name"
-            label: "作者名"
+            label: "姓名"
+            widget: "string"
+          - name: "image"
+            label: "头像"
             widget: "hidden"
           - name: "link"
-            label: "作者链接"
-            widget: "hidden"
-          - name: "image"
-            label: "作者头像"
+            label: "link"
             widget: "hidden"
       - name: "tags"
         label: "标签"
@@ -65,7 +65,7 @@ collections:
         label: "排除搜索"
         widget: "boolean"
         default: false
-  
+
   # 文档集合
   - name: "docs"
     label: "文档"

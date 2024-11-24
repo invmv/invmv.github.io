@@ -7,15 +7,60 @@ backend:
 media_folder: static/img
 public_folder: /img
 collections:
-  - name: 'blog'
-    label: 'Blog'
-    folder: 'content/blog'
+  # 配置页面集合
+  - name: "pages"
+    label: "页面"
+    folder: "content" # 所有页面存放在 content 目录下
     create: true
-    slug: '{{slug}}'
-    editor:
-      preview: false
+    slug: "{{slug}}/index" # 生成 index.md 文件
+    filter:
+      - field: "type" # 使用类型字段区分特殊页面
+        value: "page"
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { name: "title", label: "标题", widget: "string" }
+      - { name: "toc", label: "目录", widget: "boolean", default: false }
+      - { name: "description", label: "描述", widget: "text" }
+      - { name: "layout", label: "布局", widget: "string", default: "default" }
+
+  - name: "blog_index"
+    label: "博客索引"
+    file: "content/blog/_index.md"
+    fields:
+      - { name: "title", label: "标题", widget: "string" }
+
+  # 配置博客集合
+  - name: "blog"
+    label: "博客"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "标题", widget: "string" }
+      - { name: "date", label: "发布日期", widget: "datetime" }
+      - { name: "authors", label: "作者", widget: "list", 
+          fields: 
+            - { name: "name", label: "姓名", widget: "string" }
+            - { name: "github", label: "GitHub 主页", widget: "string" } }
+      - { name: "tags", label: "标签", widget: "list" }
+      - { name: "excludeSearch", label: "排除搜索", widget: "boolean", default: false }
+  
+  # 配置文档集合
+
+  - name: "docs_index"
+    label: "文档索引"
+    file: "content/docs/_index.md"
+    fields:
+      - { name: "title", label: "标题", widget: "string" }
+      - { name: "linkTitle", label: "链接标题", widget: "string" }
+
+  - name: "docs"
+    label: "文档"
+    folder: "content/docs"
+    create: true
+    nested: true # 启用嵌套目录支持
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "标题", widget: "string" }
+      - { name: "weight", label: "权重", widget: "number", required: false }
+      - { name: "next", label: "下一页", widget: "string", required: false }
+      - { name: "prev", label: "上一页", widget: "string", required: false }

@@ -17,16 +17,20 @@ collections:
       - field: "type" # 使用类型字段区分特殊页面
         value: "page"
     fields:
-      - { name: "title", label: "标题", widget: "string" }
-      - { name: "toc", label: "目录", widget: "boolean", default: false }
-      - { name: "description", label: "描述", widget: "text" }
-      - { name: "layout", label: "布局", widget: "string", default: "default" }
-
-  - name: "blog_index"
-    label: "博客索引"
-    file: "content/blog/_index.md"
-    fields:
-      - { name: "title", label: "标题", widget: "string" }
+      - name: "title"
+        label: "标题"
+        widget: "string"
+      - name: "toc"
+        label: "目录"
+        widget: "boolean"
+        default: false
+      - name: "description"
+        label: "描述"
+        widget: "text"
+      - name: "layout"
+        label: "布局"
+        widget: "string"
+        default: "default"
 
   # 配置博客集合
   - name: "blog"
@@ -35,24 +39,34 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { name: "title", label: "标题", widget: "string" }
-      - { name: "date", label: "发布日期", widget: "datetime" }
-      - { name: "authors", label: "作者", widget: "list", 
-          fields: 
-            - { name: "name", label: "姓名", widget: "string" }
-            - { name: "github", label: "GitHub 主页", widget: "string" } }
-      - { name: "tags", label: "标签", widget: "list" }
-      - { name: "excludeSearch", label: "排除搜索", widget: "boolean", default: false }
+      - name: "title"
+        label: "标题"
+        widget: "string"
+      - name: "date"
+        label: "发布日期"
+        widget: "datetime"
+      - name: "authors"
+        label: "作者"
+        widget: "list"
+        fields:
+          - name: "name"
+            label: "作者名"
+            widget: "hidden"
+          - name: "link"
+            label: "作者链接"
+            widget: "hidden"
+          - name: "image"
+            label: "作者头像"
+            widget: "hidden"
+      - name: "tags"
+        label: "标签"
+        widget: "list"
+      - name: "excludeSearch"
+        label: "排除搜索"
+        widget: "boolean"
+        default: false
   
   # 配置文档集合
-
-  - name: "docs_index"
-    label: "文档索引"
-    file: "content/docs/_index.md"
-    fields:
-      - { name: "title", label: "标题", widget: "string" }
-      - { name: "linkTitle", label: "链接标题", widget: "string" }
-
   - name: "docs"
     label: "文档"
     folder: "content/docs"
@@ -60,7 +74,38 @@ collections:
     nested: true # 启用嵌套目录支持
     slug: "{{slug}}"
     fields:
-      - { name: "title", label: "标题", widget: "string" }
-      - { name: "weight", label: "权重", widget: "number", required: false }
-      - { name: "next", label: "下一页", widget: "string", required: false }
-      - { name: "prev", label: "上一页", widget: "string", required: false }
+      - name: "title"
+        label: "标题"
+        widget: "string"
+      - name: "weight"
+        label: "权重"
+        widget: "number"
+        required: false
+      - name: "next"
+        label: "下一页"
+        widget: "string"
+        required: false
+      - name: "prev"
+        label: "上一页"
+        widget: "string"
+        required: false
+
+  # 索引页设置
+  - name: "blog_index"
+    label: "博客索引"
+    file: "content/blog/_index.md"
+    fields:
+      - name: "title"
+        label: "标题"
+        widget: "string"
+
+  - name: "docs_index"
+    label: "文档索引"
+    file: "content/docs/_index.md"
+    fields:
+      - name: "title"
+        label: "标题"
+        widget: "string"
+      - name: "linkTitle"
+        label: "链接标题"
+        widget: "string"

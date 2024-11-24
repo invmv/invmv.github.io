@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: username/repo
+  repo: invmv/invmv.github.io
   branch: main # Branch to update (optional; defaults to master)
   site_domain: https://invmy.us.kg
   base_url: https://invmy.us.kg

@@ -2,9 +2,7 @@ backend:
   name: github
   repo: invmv/invmv.github.io
   branch: main # Branch to update (optional; defaults to master)
-  site_domain: https://invmy.us.kg
-  base_url: https://invmy.us.kg
-  auth_endpoint: /api/auth
+  base_url: https://sveltia-cms-auth.iiv.workers.dev/
 media_folder: static/img
 public_folder: /img
 collections:

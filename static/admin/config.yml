@@ -71,7 +71,8 @@ collections:
     label: "文档"
     folder: "content/docs"
     create: true
-    nested: true # 启用嵌套目录支持
+    nested: # 修正为正确格式的对象
+      depth: 100 # 如果需要嵌套目录支持
     slug: "{{slug}}"
     fields:
       - name: "title"
